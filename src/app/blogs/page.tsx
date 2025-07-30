@@ -1,17 +1,22 @@
+"use client"
+
 import BlogCard from '@/components/ui/BlogCard';
+import { useGetBlogsQuery } from '@/redux/apis/blogs.slice';
 import { Blog } from '@/types';
 import { Metadata } from 'next';
 import React from 'react';
 
-export const metadata: Metadata ={
-    title:"NexaBlog | Blogs"
-}
+// export const metadata: Metadata ={
+//     title:"NexaBlog | Blogs"
+// }
 
-const BlogsPage = async() => {
-    const res = await fetch('http://localhost:5000/blogs', {
-        cache:"no-store"
-    });
-    const blogs = await res.json();
+const BlogsPage = () => {
+    // const res = await fetch('http://localhost:5000/blogs', {
+    //     cache:"no-store"
+    // });
+    // const blogs = await res.json();
+
+    const { data: blogs, isLoading } = useGetBlogsQuery({});
 
     return (
         <div className='w-[90%] mx-auto'>
